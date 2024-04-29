@@ -46,8 +46,19 @@ public class App {
                     break;
             }
             System.out.println("연산 결과 : " + result);
-            resultArr[resultIdx] = result; // 연산결과를 배열의 해당 인덱스에 저장
-            resultIdx++; // 인덱스 번호 증가
+
+            if (resultIdx < 10) { // 배열에 저장된 연산결과가 10개 보다 작은 경우
+                resultArr[resultIdx] = result; // 연산결과를 배열의 해당 인덱스에 저장
+                resultIdx++; // 인덱스 번호 증가
+            } else if (resultIdx == 10) { //배열에 저장된 연산결과가 10개인 경우
+                for (int i = 1; i < resultArr.length; i++) { // 배열 값들을 인덱스 번호 하나 앞에 저장
+                    resultArr[i - 1] = resultArr[i];
+                }
+                resultArr[resultIdx - 1] = result; // 마지막 인덱스에 연산된 결과 저장
+            }
+            System.out.println("배열에 저장된 연산 결과들 : "+Arrays.toString(resultArr));
+
+
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exitSign = sc.next();
