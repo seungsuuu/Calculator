@@ -3,7 +3,8 @@ package main.java.calculator;
 import java.util.ArrayList;
 
 public class Calculator {
-    ArrayList<Integer> resultArr = new ArrayList<>(); // 연산결과가 저장되는 컬렉션 타입
+    // 연산결과가 저장되는 컬렉션 타입 private로 선언해 캡슐화
+    private ArrayList<Integer> resultArr = new ArrayList<>();
     int result = 0;
 
     public Calculator() { // Calculator 클래스 생성자
@@ -39,4 +40,29 @@ public class Calculator {
         }
         return result;
     }
+
+    /**
+     * 연산결과가 저장된 resultArr가 캡슐화되어 간접적으로 getter 메서드
+     * @return : 클래스에 저장된 연산결과 리스트
+     */
+    public ArrayList<Integer> getResultArr() {
+        ArrayList<Integer> resultArr = this.resultArr;
+        return resultArr;
+    }
+
+    /**
+     * 연산된 연산결과를 캡슐화된 리스트에 add 하는 setter 메서드
+     * @param result 연산된 결과를 받아 리스트에 저장
+     */
+    public void addResultArr(int result) {
+        this.resultArr.add(result);
+    }
+
+    /**
+     * 캡슐화된 리스트에 요소를 삭제하기 위한 setter 메서드
+     */
+    public void removeResultArr() {
+        this.resultArr.remove(0);
+    }
+
 }

@@ -33,18 +33,19 @@ public class App {
                 System.out.println(e.getMessage());
             }
             System.out.println("연산 결과 : " + result);
-            cal.resultArr.add(result);
+            cal.addResultArr(result); // setter메서드로 접근해서 요소 추가
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String removeSign = sc.next();
             if (removeSign.equals("remove")) { //입력된 문자열이 "remove"면 ArrayList의 첫 번째 요소 삭제
-                cal.resultArr.remove(0);
+                cal.removeResultArr(); // setter메서드로 접근해서 요소 삭제
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquirySign = sc.next();
-            if (inquirySign.equals("inquiry")) { //입력된 문자열이 "inquiry"면 ArrayList의 모든 요소 조회
-                for(int i: cal.resultArr) {
+            if (inquirySign.equals("inquiry")) {//입력된 문자열이 "inquiry"면 ArrayList의 모든 요소 조회
+                ArrayList<Integer> resultArr  = cal.getResultArr(); //getter 메서드로 캡슐화된 연산결과 리스트 가져오기
+                for(int i: resultArr) {
                     System.out.println("저장된 연산결과 : " + i);
                 }
             }
