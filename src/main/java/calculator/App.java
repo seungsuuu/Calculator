@@ -55,6 +55,14 @@ public class App {
                 resultList.remove(0);
             }
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquirySign = sc.next();
+            if (inquirySign.equals("inquiry")) { //입력된 문자열이 "inquiry"면 ArrayList의 모든 요소 조회
+                for(int i: resultList) {
+                    System.out.println("저장된 연산결과 : " + i);
+                }
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exitSign = sc.next();
             if (exitSign.equals("exit")) { // 입력한 문자열이 "exit"면 exitCheck를 false로 바꿔 반복 종료
