@@ -1,6 +1,8 @@
 package main.java.calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,8 +14,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean exitCheck = true; // 반복분 체크를 위한 boolean 변수 선언
-        int[] resultArr = new int[10]; // 연산결과를 저장할 int 배열 선언
-        int resultIdx = 0; // 연산결과를 저장할 배열의 인덱스를 나타내기 위한 변수 선언
+        ArrayList<Integer> resultList = new ArrayList<>(); // 길이가 고정되지 않은 동적 자료구조 ArrayList 선언 및 생성
 
         while (exitCheck) { // exitCheck를 체크해 while 반복문을 수행
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -46,19 +47,13 @@ public class App {
                     break;
             }
             System.out.println("연산 결과 : " + result);
+            resultList.add(result); // 선언 생성된 ArrayList에 연산 결과 저장
 
-            if (resultIdx < 10) { // 배열에 저장된 연산결과가 10개 보다 작은 경우
-                resultArr[resultIdx] = result; // 연산결과를 배열의 해당 인덱스에 저장
-                resultIdx++; // 인덱스 번호 증가
-            } else if (resultIdx == 10) { //배열에 저장된 연산결과가 10개인 경우
-                for (int i = 1; i < resultArr.length; i++) { // 배열 값들을 인덱스 번호 하나 앞에 저장
-                    resultArr[i - 1] = resultArr[i];
-                }
-                resultArr[resultIdx - 1] = result; // 마지막 인덱스에 연산된 결과 저장
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String removeSign = sc.next();
+            if (removeSign.equals("remove")) { //입력된 문자열이 "remove"면 ArrayList의 첫 번째 요소 삭제
+                resultList.remove(0);
             }
-            System.out.println("배열에 저장된 연산 결과들 : "+Arrays.toString(resultArr));
-
-
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exitSign = sc.next();
