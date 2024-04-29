@@ -1,6 +1,5 @@
 package main.java.calculator;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

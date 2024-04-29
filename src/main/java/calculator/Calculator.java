@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class Calculator {
     // 연산결과가 저장되는 컬렉션 타입 private로 선언해 캡슐화
-    private ArrayList<Integer> resultArr = new ArrayList<>();
-    int result = 0;
+    private ArrayList<Integer> resultArr;
+    int result;
 
     public Calculator() { // Calculator 클래스 생성자
-
+        result = 0;
+        resultArr = new ArrayList<>();
     }
 
     /**
