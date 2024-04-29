@@ -20,8 +20,20 @@ public class App {
         System.out.print("사칙연산 기호를 입력하세요: ");
         char operator = sc.next().charAt(0); // charAt(idx)는 문자열에서 매개변수로 받은 주소 값의 문자를 반환한다.
 
-        System.out.println("num1 값 : "+num1);
-        System.out.println("num2 값 : "+num2);
-        System.out.println("operator : "+operator);
+        System.out.println("입력 받은 연산 : "+num1+operator+num2);
+
+        int result = 0;
+        switch (operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
+            case '+' : result = num1 + num2; break;
+            case '-' : result = num1 - num2; break;
+            case '*' : result = num1 * num2; break;
+            case '/' :
+                if (num2 == 0) { // 나눗셈은 0으로 나눌 수 없으므로 나누려는 num2 값에 0이면 프로그램 종료
+                    System.out.println("나눗셈의 경우 0으로 나눌 수 없습니다.");
+                    return;
+                } else result = num1 / num2; break;
+        }
+        System.out.println("연산 결과 : "+result);
+
     }
 }
