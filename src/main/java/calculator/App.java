@@ -1,5 +1,6 @@
 package main.java.calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        boolean exitCheck = true;
+        boolean exitCheck = true; // 반복분 체크를 위한 boolean 변수 선언
+        int[] resultArr = new int[10]; // 연산결과를 저장할 int 배열 선언
+        int resultIdx = 0; // 연산결과를 저장할 배열의 인덱스를 나타내기 위한 변수 선언
 
         while (exitCheck) { // exitCheck를 체크해 while 반복문을 수행
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -43,6 +46,8 @@ public class App {
                     break;
             }
             System.out.println("연산 결과 : " + result);
+            resultArr[resultIdx] = result; // 연산결과를 배열의 해당 인덱스에 저장
+            resultIdx++; // 인덱스 번호 증가
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exitSign = sc.next();
