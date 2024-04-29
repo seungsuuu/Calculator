@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /**
  * main 메서드
- * param :
- * return :
+ * param : args
+ * return : void
  */
 public class App {
     public static void main(String[] args) {
