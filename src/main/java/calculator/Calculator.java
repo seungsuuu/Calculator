@@ -42,26 +42,27 @@ public class Calculator {
     }
 
     /**
-     * 연산결과가 저장된 resultArr가 캡슐화되어 간접적으로 getter 메서드
-     * @return : 클래스에 저장된 연산결과 리스트
+     * 연산결과가 저장된 resultArr에 간접적으로 접근하여 저장된 값 조회하는 getter 메서드
      */
-    public ArrayList<Integer> getResultArr() {
-        ArrayList<Integer> resultArr = this.resultArr;
-        return resultArr;
+    public void inquiryResults() {
+        ArrayList<Integer> arr = this.resultArr;
+        for (int i : arr) {
+            System.out.println("저장된 연산결과 : " + i);
+        }
     }
 
     /**
      * 연산된 연산결과를 캡슐화된 리스트에 add 하는 setter 메서드
      * @param result 연산된 결과를 받아 리스트에 저장
      */
-    public void addResultArr(int result) {
+    public void addResult(int result) {
         this.resultArr.add(result);
     }
 
     /**
      * 캡슐화된 리스트에 요소를 삭제하기 위한 setter 메서드
      */
-    public void removeResultArr() {
+    public void removeResult() {
         this.resultArr.remove(0);
     }
 
