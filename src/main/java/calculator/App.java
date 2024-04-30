@@ -21,7 +21,7 @@ public class App {
             System.out.println("입력한 타입 : "+calculatorType);
 
             if (calculatorType.equals("operation")) { // 사칙연산 계산기
-                int resultInt = 0;
+                int resultInt;
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int num1 = sc.nextInt(); // 첫 번쨰 숫자를 입력 받아 int타입 num1에 대입
 
@@ -56,7 +56,7 @@ public class App {
                 }
             } else if (calculatorType.equals("circle")) { // 원의 넓비 계산기
 
-                double resultDouble = 0.0;
+                double resultDouble;
                 System.out.print("원의 반지름을 입력하세요: ");
                 double radius = sc.nextDouble(); // 원의 반지름을 입력 받아 double 타입 radius에 대입
 

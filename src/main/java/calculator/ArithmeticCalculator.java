@@ -21,19 +21,23 @@ public class ArithmeticCalculator extends Calculator {
     public void calculate() throws DivZeroException { // 추상 클래스 사칙연산 계산으로 구현
         switch (this.operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
             case '+':
-                result = num1 + num2;
+                AddOperator add = new AddOperator();
+                result = add.operate(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                SubtractOperator sub = new SubtractOperator();
+                result = sub.operate(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                MultiplyOperator mul = new MultiplyOperator();
+                result = mul.operate(num1, num2);
                 break;
             case '/':
                 if (num2 == 0) {
                     throw new DivZeroException();
                 } else {
-                    result = num1 / num2;
+                    DivideOperator div = new DivideOperator();
+                    result = div.operate(num1, num2);
                     break;
                 }
         }
