@@ -19,7 +19,12 @@ public class ArithmeticCalculator extends Calculator {
 
     @Override
     public void calculate() throws DivZeroException { // 추상 클래스 사칙연산 계산으로 구현
-        switch (this.operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
+        result = operateArea(num1, num2, operator);
+    }
+
+    public int operateArea(int num1, int num2, char operator) throws DivZeroException {
+        int result = 0;
+        switch (operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
             case '+':
                 AddOperator add = new AddOperator();
                 result = add.operate(num1, num2);
@@ -40,8 +45,18 @@ public class ArithmeticCalculator extends Calculator {
                     result = div.operate(num1, num2);
                     break;
                 }
+            case '%':
+                if (num2 == 0) {
+                    throw new DivZeroException();
+                } else {
+                    ModOperator mod = new ModOperator();
+                    result = mod.operate(num1, num2);
+                    break;
+                }
         }
+        return result;
     }
+
 
     /**
      * 연산을 위한 데이터를 set하는 setter
