@@ -37,7 +37,7 @@ public class App {
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String removeSign = sc.next();
             if (removeSign.equals("remove")) { //입력된 문자열이 "remove"면 ArrayList의 첫 번째 요소 삭제
-                cal.removeResult(); // removeResultArr 메서드로 호출
+                cal.removeResult(0); // removeResultArr 메서드로 호출
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");

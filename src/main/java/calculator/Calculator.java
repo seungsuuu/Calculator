@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Calculator {
     // 연산결과가 저장되는 컬렉션 타입 private로 선언해 캡슐화
     private ArrayList<Integer> resultArr = new ArrayList<>();
-    int result = 0;
 
     public Calculator() { // Calculator 클래스 생성자
 
@@ -20,6 +19,8 @@ public class Calculator {
      * @throws DivZeroException : 나눗셈의 나누는 정수값이 0일때, 예외를 보내는 예외 클래스
      */
     public int calculate(int num1, int num2, char operator) throws DivZeroException{
+        int result = 0;
+
         switch (operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
             case '+':
                 result = num1 + num2;
@@ -37,18 +38,10 @@ public class Calculator {
                 result = num1 / num2;
                 break;
                 }
+            default:
+                throw new UnsupportedOperationException("올바른 선택이 아닙니다.");
         }
         return result;
-    }
-
-    /**
-     * 연산결과가 저장된 resultArr에 간접적으로 접근하여 저장된 값 조회하는 getter 메서드
-     */
-    public void inquiryResults() {
-        ArrayList<Integer> arr = this.resultArr;
-        for (int i : arr) {
-            System.out.println("저장된 연산결과 : " + i);
-        }
     }
 
     /**
@@ -62,8 +55,17 @@ public class Calculator {
     /**
      * 캡슐화된 리스트에 요소를 삭제하기 위한 setter 메서드
      */
-    public void removeResult() {
-        this.resultArr.remove(0);
+    public void removeResult(int idx) {
+        this.resultArr.remove(idx);
+    }
+
+    /**
+     * 연산결과가 저장된 resultArr에 간접적으로 접근하여 저장된 값 조회하는 getter 메서드
+     */
+    public void inquiryResults() {
+        for (int i : resultArr) {
+            System.out.println("저장된 연산결과 : " + i);
+        }
     }
 
 }
