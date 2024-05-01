@@ -3,11 +3,15 @@ package main.java.calculator;
 import java.util.ArrayList;
 
 public class Calculator {
-    // 연산결과가 저장되는 컬렉션 타입 private로 선언해 캡슐화
+    // 연산결과가 저장되는 컬렉션 타입 private 로 선언해 캡슐화
     private ArrayList<Integer> resultArr;
+    private ArrayList<Double> resultArrDou;
 
-    public Calculator(ArrayList<Integer> resultArr) { // Calculator 클래스 생성자, 매개변수로 ArrayList 를 받아 초기화
+    private static final double PI = 3.14; // 3.14는 원주율로 절대 변하지 않는 상수이기 때문
+
+    public Calculator(ArrayList<Integer> resultArr,ArrayList<Double> resultArrDou) { // Calculator 클래스 생성자, 매개변수로 ArrayList 를 받아 초기화
         this.resultArr = resultArr;
+        this.resultArrDou = resultArrDou;
     }
 
     /**
@@ -45,7 +49,7 @@ public class Calculator {
     }
 
     /**
-     * 연산된 연산결과를 캡슐화된 리스트에 add 하는 setter 메서드
+     * 연산된 연산결과를 캡슐화된 리스트에 add 메서드
      * @param result 연산된 결과를 받아 리스트에 저장
      */
     public void addResult(int result) {
@@ -53,14 +57,14 @@ public class Calculator {
     }
 
     /**
-     * 캡슐화된 리스트에 요소를 삭제하기 위한 setter 메서드
+     * 캡슐화된 리스트에 요소를 삭제하는 메서드
      */
     public void removeResult(int idx) {
         this.resultArr.remove(idx);
     }
 
     /**
-     * 연산결과가 저장된 resultArr에 간접적으로 접근하여 저장된 값 조회하는 getter 메서드
+     * 연산결과가 저장된 resultArr 에 간접적으로 접근하여 저장된 값 조회하는 메서드
      */
     public void inquiryResults() {
         for (int i : resultArr) {
@@ -68,4 +72,32 @@ public class Calculator {
         }
     }
 
+
+    public double calculateCircleArea(int radius) {
+        return PI * radius * radius;
+    }
+
+    /**
+     * 연산된 연산결과를 캡슐화된 리스트에 add 메서드
+     * @param result 연산된 결과를 받아 리스트에 저장
+     */
+    public void addResultDou(double result) {
+        this.resultArrDou.add(result);
+    }
+
+    /**
+     * 캡슐화된 리스트에 요소를 삭제하는 메서드
+     */
+    public void removeResultDou(int idx) {
+        this.resultArrDou.remove(idx);
+    }
+
+    /**
+     * 연산결과가 저장된 resultArr 에 간접적으로 접근하여 저장된 값 조회하는 메서드
+     */
+    public void inquiryResultsDou() {
+        for (double i : resultArrDou) {
+            System.out.println("저장된 연산결과 : " + i);
+        }
+    }
 }
