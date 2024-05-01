@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Calculator {
     // 연산결과가 저장되는 컬렉션 타입 private로 선언해 캡슐화
-    private ArrayList<Integer> resultArr = new ArrayList<>();
+    private ArrayList<Integer> resultArr;
 
-    public Calculator() { // Calculator 클래스 생성자
-
+    public Calculator(ArrayList<Integer> resultArr) { // Calculator 클래스 생성자, 매개변수로 ArrayList 를 받아 초기화
+        this.resultArr = resultArr;
     }
 
     /**
@@ -19,7 +19,7 @@ public class Calculator {
      * @throws DivZeroException : 나눗셈의 나누는 정수값이 0일때, 예외를 보내는 예외 클래스
      */
     public int calculate(int num1, int num2, char operator) throws DivZeroException{
-        int result = 0;
+        int result;
 
         switch (operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
             case '+':

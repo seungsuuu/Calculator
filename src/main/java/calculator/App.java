@@ -1,5 +1,6 @@
 package main.java.calculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Calculator cal = new Calculator(); // Calculator 객체 생성
+        Calculator cal = new Calculator(new ArrayList<>()); // Calculator 객체 생성 시, ArrayList 를 생성하고 초기화
         boolean exitCheck = true; // 반복분 체크를 위한 boolean 변수 선언
 
         while (exitCheck) { // exitCheck를 체크해 while 반복문을 수행
