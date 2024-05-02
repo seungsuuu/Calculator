@@ -1,5 +1,5 @@
 package main.java.calculator;
 
-public interface Operator {
-    int operator(int num1, int num2) throws DivZeroException;
+public interface Operator<T extends Number> {
+    T operator(T num1, T num2) throws DivZeroException;
 }

@@ -1,8 +1,16 @@
 package main.java.calculator;
 
-public class SubtractOperator  implements Operator {
+public class SubtractOperator<T extends Number>  implements Operator<T> {
+
+    public final Class<T> type;
+
+    public SubtractOperator(Class<T> type) {
+        this.type = type;
+    }
+
     @Override
-    public int operator(int num1, int num2) {
-        return num1 - num2;
+    public T operator(T num1, T num2) {
+        double result = num1.doubleValue() - num2.doubleValue();
+        return NumberConversionUtils.convertNumberToType(result, type);
     }
 }

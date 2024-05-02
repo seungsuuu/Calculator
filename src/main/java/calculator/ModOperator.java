@@ -1,11 +1,19 @@
 package main.java.calculator;
 
-public class ModOperator implements Operator {
+public class ModOperator<T extends Number>  implements Operator<T> {
+    public final Class<T> type;
+
+    public ModOperator(Class<T> type) {
+        this.type = type;
+    }
+
     @Override
-    public int operator(int num1, int num2) throws DivZeroException{
-        if (num2 == 0) {
+    public T operator(T num1, T num2) throws DivZeroException {
+        if ((Integer) num2 == 0) {
             throw new DivZeroException();
         }
-        return num1 % num2;
+        double result = num1.doubleValue() % num2.doubleValue();
+        return NumberConversionUtils.convertNumberToType(result, type);
     }
 }
+

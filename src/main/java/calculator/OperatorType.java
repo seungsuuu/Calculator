@@ -7,7 +7,7 @@ public enum OperatorType {
     DIVISION('/'),
     MODULO('%');
 
-    private char symbol;
+    private final char symbol;
 
     OperatorType(char symbol) {
         this.symbol = symbol;

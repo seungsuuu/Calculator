@@ -1,11 +1,18 @@
 package main.java.calculator;
 
-public class DivideOperator  implements Operator{
+public class DivideOperator<T extends Number>  implements Operator<T>{
+    public final Class<T> type;
+
+    public DivideOperator(Class<T> type) {
+        this.type = type;
+    }
+
     @Override
-    public int operator(int num1, int num2) throws DivZeroException{
-        if (num2 == 0) {
+    public T operator(T num1, T num2) throws DivZeroException {
+        if ((Integer) num2 == 0) {
             throw new DivZeroException();
         }
-        return num1 / num2;
+        double result = num1.doubleValue() / num2.doubleValue();
+        return NumberConversionUtils.convertNumberToType(result, type);
     }
 }

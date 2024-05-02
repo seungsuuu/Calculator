@@ -2,10 +2,13 @@ package main.java.calculator;
 
 import java.util.ArrayList;
 
-public class ArithmeticCalculator extends Calculator {
+public class ArithmeticCalculator<T extends Number> extends Calculator {
 
-    public ArithmeticCalculator(ArrayList<Double> resultArr) { // 매개변수로 ArrayList 생성자를 받아 부모 생성자의 ArrayList 생성
+    public final Class<T> type;
+
+    public ArithmeticCalculator(ArrayList<Double> resultArr, Class<T> type) { // 매개변수로 ArrayList 생성자를 받아 부모 생성자의 ArrayList 생성
         super(resultArr);
+        this.type =  type;
     }
 
     /**
@@ -16,18 +19,18 @@ public class ArithmeticCalculator extends Calculator {
      * @return result : 사직연산의 결과를 전달하는 정수 타입 반환값
      * @throws DivZeroException : 나눗셈의 나누는 정수값이 0일때, 예외를 보내는 예외 클래스
      */
-    public int calculate(int num1, int num2, char operator) throws DivZeroException{
+    public T calculate(T num1, T num2, char operator) throws DivZeroException{
         return operatorFactory(operator).operator(num1, num2);
     }
 
-    public Operator operatorFactory(char operator) {
+    public Operator<T> operatorFactory(char operator) {
         OperatorType operatorType = OperatorType.fromOperator(operator);
         return switch (operatorType) {
-            case ADDITION-> new AddOperator();
-            case SUBTRACTION -> new SubtractOperator();
-            case MULTIPLICATION-> new MultiplyOperator();
-            case DIVISION -> new DivideOperator();
-            case MODULO -> new ModOperator();
+            case ADDITION-> new AddOperator(type);
+            case SUBTRACTION -> new SubtractOperator(type);
+            case MULTIPLICATION-> new MultiplyOperator(type);
+            case DIVISION -> new DivideOperator(type);
+            case MODULO -> new ModOperator(type);
         };
     }
 
