@@ -3,9 +3,18 @@ package main.java.calculator;
 import java.util.ArrayList;
 
 public class ArithmeticCalculator extends Calculator {
+    AddOperator addOperator;
+    SubtractOperator subtractOperator;
+    MultiplyOperator multiplyOperator;
+    DivideOperator divideOperator;
 
-    public ArithmeticCalculator(ArrayList<Double> resultArr) { // 매개변수로 ArrayList 생성자를 받아 부모 생성자의 ArrayList 생성
+    public ArithmeticCalculator(ArrayList<Double> resultArr, AddOperator addOperator, SubtractOperator subtractOperator,
+                                MultiplyOperator multiplyOperator, DivideOperator divideOperator) { // 매개변수로 ArrayList 생성자를 받아 부모 생성자의 ArrayList 생성
         super(resultArr);
+        this.addOperator = addOperator;
+        this.subtractOperator = subtractOperator;
+        this.multiplyOperator = multiplyOperator;
+        this.divideOperator = divideOperator;
     }
 
     /**
@@ -21,19 +30,19 @@ public class ArithmeticCalculator extends Calculator {
 
         switch (operator) { // 입력받은 연산자(operator) 값에 따라 다르게 연산
             case '+':
-                result = num1 + num2;
+                result = addOperator.operator(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                result = subtractOperator.operator(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                result = multiplyOperator.operator(num1, num2);
                 break;
             case '/':
                 if (num2 == 0) {
                     throw new DivZeroException();
                 } else {
-                    result = num1 / num2;
+                    result = divideOperator.operator(num1, num2);
                     break;
                 }
             default:

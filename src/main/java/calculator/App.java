@@ -13,7 +13,13 @@ public class App {
         Scanner sc = new Scanner(System.in);
         boolean exitCheck = true; // 반복분 체크를 위한 boolean 변수 선언
 
-        ArithmeticCalculator calAri = new ArithmeticCalculator(new ArrayList<>()); // ArithmeticCalculator 객체 생성 시, ArrayList 를 생성하고 초기화
+        ArithmeticCalculator calAri = new ArithmeticCalculator(
+                new ArrayList<>(),
+                new AddOperator(),
+                new SubtractOperator(),
+                new MultiplyOperator(),
+                new DivideOperator()
+        ); // ArithmeticCalculator 객체 생성 시, ArrayList 를 생성하고 초기화 및 사칙연산 클래스들 생성
         CircleCalculator calCir = new CircleCalculator(new ArrayList<>()); // CircleCalculator 객체 생성 시, ArrayList 를 생성하고 초기화
 
 
