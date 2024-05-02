@@ -1,6 +1,7 @@
 package main.java.calculator;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -52,6 +53,14 @@ public class App {
                 if (inquirySign.equals("inquiry")) {//입력된 문자열이 "inquiry"면 inquiryResults 메서드 호출
                     calAri.inquiryResults();
                 }
+
+                System.out.println("저장된 연산결과 중 입력한 값보다 큰 값들을 조회하시겠습니까? (lambda 입력시 조회)");
+                if (Objects.equals(sc.next(), "lambda")) {
+                    System.out.println("기준 값을 입력하세요: ");
+                    double num = sc.nextDouble();
+                    calAri.printResultGreaterThan(num);
+                }
+
             } else if (typeCheck == 2) {
                 System.out.print("원의 반지름을 입력하세요: ");
                 int radius = sc.nextInt(); // 원의 반지름을 입력 받아 int타입 radius에 대입

@@ -42,4 +42,9 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
         }
     }
 
+    public void printResultGreaterThan(double num) {
+        super.getResultArr().stream()
+                .filter(result -> result > num)
+                .forEach(result -> System.out.println("연산결과 = " + result));
+    }
 }
