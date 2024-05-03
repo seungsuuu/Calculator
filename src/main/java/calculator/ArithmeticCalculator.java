@@ -17,9 +17,8 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
      * @param num2 : 두 번째 정수 타입
      * @param operator : 사직연산 기호 문자 타입
      * @return result : 사직연산의 결과를 전달하는 정수 타입 반환값
-     * @throws DivZeroException : 나눗셈의 나누는 정수값이 0일때, 예외를 보내는 예외 클래스
      */
-    public T calculate(T num1, T num2, char operator) throws DivZeroException{
+    public T calculate(T num1, T num2, char operator){
         return operatorFactory(operator).operator(num1, num2);
     }
 

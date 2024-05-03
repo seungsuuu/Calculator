@@ -8,10 +8,7 @@ public class ModOperator<T extends Number>  implements Operator<T> {
     }
 
     @Override
-    public T operator(T num1, T num2) throws DivZeroException {
-        if ((Integer) num2 == 0) {
-            throw new DivZeroException();
-        }
+    public T operator(T num1, T num2){
         double result = num1.doubleValue() % num2.doubleValue();
         return NumberConversionUtils.convertNumberToType(result, type);
     }
